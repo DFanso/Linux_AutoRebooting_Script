@@ -5,24 +5,24 @@ This Script can reboot your linux server automatically on a given time
 
 1. Create a new systemd service file with sudo nano /etc/systemd/system/reboot.service and paste the following:
 
-[Unit]
-Description=Reboot
+  [Unit]
+  Description=Reboot
 
-[Service]
-Type=oneshot
-ExecStart=/sbin/reboot
+  [Service]
+  Type=oneshot
+  ExecStart=/sbin/reboot
 
 2. Create a new systemd timer file with sudo nano /etc/systemd/system/reboot.timer and paste the following:
 
-[Unit]
-Description=Reboot every 30 minutes
+  [Unit]
+  Description=Reboot every 30 minutes
 
-[Timer]
-OnBootSec=15min
-OnUnitActiveSec=30min
+  [Timer]
+  OnBootSec=15min
+  OnUnitActiveSec=30min
 
-[Install]
-WantedBy=timers.target
+  [Install]
+  WantedBy=timers.target
  
  
 3. Enable the timer to start on boot with sudo systemctl enable reboot.timer'
